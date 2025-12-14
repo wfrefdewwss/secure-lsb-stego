@@ -1,30 +1,29 @@
-# 🔒 Fast Secure Steganography Tool (Experimental)
+# 🔒 Stego Tool v1 – Hide Stuff in Pics (kinda experimental)
 
 ![Python](https://img.shields.io/badge/Python-3.8+-blue)
 ![License](https://img.shields.io/badge/License-MIT-green)
 
-**Status:** Experimental – testing ideas for hiding data in images.
+yo, so this is a lil Python thing i made to **hide text in images**.  
+it uses AES encryption + random spots in the pic so no one can peek unless they got the key.  
 
-A Python tool to **securely hide text in images** using AES encryption and randomized pixel positions. Optimized for **large images** and comes with a **user-friendly GUI**.  
-
-> ⚠️ **Warning:** This project is experimental. Use it for testing and learning purposes only. Not intended for production security.
-
----
-
-## 📝 Features
-
-- Encrypts text using **AES (Fernet) 128-bit encryption**
-- Hides data in **randomized pixel positions** for better security
-- **Memory-efficient**: can handle very large images without crashes
-- Non-blocking **Tkinter GUI** with threading
-- Supports **PNG and BMP images**
-- Generates **44-character base64 Fernet keys** for encryption
+> ⚠️ heads up: this is just for fun/testing. don’t trust it with ur super secret stuff lol.
 
 ---
 
-## ⚙️ Installation
+## ✨ Features
 
-Requires **Python 3.8+** and the following libraries:
+- encrypts ur text with **AES/Fernet** (fancy math, basically safe-ish)
+- hides data in **random pixel spots** so it’s kinda sneaky
+- won’t crash ur PC on big images (i tried)
+- simple **GUI with Tkinter** (click buttons, boom)
+- works with **PNG/BMP** (no JPEG pls)
+- makes a **44-char key** – save it or u’re screwed
+
+---
+
+## ⚙️ Setup
+
+u need **Python 3.8+** and a few libs:
 
 ```bash
 pip install pillow cryptography
