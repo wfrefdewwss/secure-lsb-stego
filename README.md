@@ -9,7 +9,8 @@ A Python tool to securely hide text in images using **AES encryption** and rando
 
 ## Features
 
-- Encrypt text using AES (Fernet)  
+- Encrypt text using AES (Fernet)
+- Add support for AES-256-GCM and enhance UI  
 - Hide encrypted data in randomized pixel positions  
 - Supports PNG and BMP images  
 - Memory-efficient for large images  
