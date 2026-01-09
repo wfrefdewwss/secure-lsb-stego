@@ -11,7 +11,7 @@ import tkinter as tk
 from tkinter import ttk, filedialog, messagebox, scrolledtext
 from PIL import Image
 import hashlib
-import random
+import secrets  # Changed from random (imported as requested)
 import threading
 import queue
 from cryptography.fernet import Fernet
@@ -24,6 +24,28 @@ import base64
 import os
 
 # Requirements: pip install Pillow cryptography pyperclip
+
+# ---------- Deterministic RNG (replaces random.Random) ----------
+class DeterministicRNG:
+    """Cryptographically secure deterministic RNG using repeated hashing"""
+    def __init__(self, seed: int):
+        # Convert seed to 32-byte array for consistent hashing
+        self.seed = seed.to_bytes(32, 'big', signed=False)
+        self.counter = 0
+    
+    def randrange(self, max_val: int) -> int:
+        """Generate deterministic pseudo-random number in range [0, max_val)"""
+        if max_val <= 0:
+            raise ValueError("max_val must be positive")
+        
+        # Generate hash from seed + counter for deterministic but unpredictable output
+        data = self.seed + self.counter.to_bytes(8, 'big', signed=False)
+        hash_val = hashlib.sha256(data).digest()
+        num = int.from_bytes(hash_val, 'big')
+        result = num % max_val
+        self.counter += 1
+        return result
+
 
 # ---------- Theme Manager ----------
 class ThemeManager:
@@ -213,7 +235,7 @@ def create_position_generator(seed: int, max_pos: int):
     Return a generator that yields unique random positions.
     Memory-efficient: doesn't create a list of all positions.
     """
-    rng = random.Random(seed)
+    rng = DeterministicRNG(seed)
     used = set()
     while True:
         pos = rng.randrange(max_pos)
