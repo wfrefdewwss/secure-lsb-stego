@@ -57,7 +57,7 @@ pip install pillow cryptography pyperclip
 Clone the repository:
 
 ```bash
-git clone https://github.com/BitMedusa/secure-lsb-stego.git 
+git clone https://github.com/JulianApollo/secure-lsb-stego.git 
 cd secure-lsb-stego
 ```
 
