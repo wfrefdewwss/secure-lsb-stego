@@ -11,7 +11,7 @@ import tkinter as tk
 from tkinter import ttk, filedialog, messagebox, scrolledtext
 from PIL import Image
 import hashlib
-import secrets  # Changed from random (imported as requested)
+import secrets  # Changed from random 
 import threading
 import queue
 from cryptography.fernet import Fernet
